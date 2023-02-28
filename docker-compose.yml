@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  # web:
+  #   build: ./web
+  #   ports:
+  #     - '3000:3000'
+  #   expose:
+  #     - "3000"
+
+  # server:
+  #   build: ./server
+  #   ports:
+  #     - '8000:8000'
+  #   expose:
+  #     - "8000"
+
+  mongodb_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - '27017:27017'
+    expose:
+      - "27017"
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
